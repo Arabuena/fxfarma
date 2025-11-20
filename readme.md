@@ -1,6 +1,6 @@
 # FX Farma
 
-Aplicativo de transporte estilo Uber desenvolvido com MERN Stack (MongoDB, Express, React, Node.js).
+Aplicativo para farmácia desenvolvido com MERN Stack (MongoDB, Express, React, Node.js).
 
 ## 🏷️ Administração de Produtos: Tags e Exibição na Home
 
