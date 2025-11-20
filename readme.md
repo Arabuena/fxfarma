@@ -1,4 +1,4 @@
-# Move App
+# FX Farma
 
 Aplicativo de transporte estilo Uber desenvolvido com MERN Stack (MongoDB, Express, React, Node.js).
 
