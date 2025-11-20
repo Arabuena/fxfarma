@@ -1,0 +1,15 @@
+# dependências e builds
+node_modules/
+dist/
+build/
+
+# segredos
+.env
+.env.local
+
+# cache/editor
+.DS_Store
+Thumbs.db
+
+# vídeos/imagens grandes (se não usar LFS)
+# images/*.mp4
