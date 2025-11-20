@@ -124,8 +124,13 @@
     .pricing{display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:16px}
     .price{font-size:28px;font-weight:bold}
     .countdown span{display:inline-block;min-width:38px;padding:8px;border-radius:8px;background:rgba(255,255,255,0.12);margin-right:6px;text-align:center}
-    .roi{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:16px}
-    .input,.select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.35);background:rgba(255,255,255,0.1);color:#fff}
+    .roi{display:grid;grid-template-columns:repeat(2,minmax(220px,1fr));gap:14px;background:#fff;color:#0a1f44;border-radius:16px;box-shadow:0 12px 28px rgba(0,0,0,.25);padding:20px;border:1px solid rgba(0,0,0,.05)}
+    .roi .box{background:#f7f9ff;border:1px solid #c9d4ff;border-radius:10px;padding:12px;position:relative;overflow:hidden}
+    .roi label{display:block;font-size:13px;margin-bottom:6px;color:#103a8c}
+    .roi .value{font-weight:700;letter-spacing:.2px;color:#102a6b}
+    .roi .input,.roi .select{box-sizing:border-box;display:block;width:100%;margin:0;padding:12px 14px;border-radius:10px;border:1px solid #c9d4ff;background:#fff;color:#102a6b}
+    .roi input[type=number]::-webkit-outer-spin-button,.roi input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    .roi input[type=number]{-moz-appearance:textfield}
     footer{text-align:center;padding:40px 20px;opacity:.85}
     @media(max-width:760px){.compare{grid-template-columns:1fr}.hero-grid{grid-template-columns:1fr}}
     .testimonials{text-align:center}
@@ -146,6 +151,14 @@
     .video-wrap{position:relative;border-radius:12px;overflow:hidden}
     .video-wrap video{width:100%;display:block;background:#000;border-radius:12px}
     .video-caption{margin-top:10px;font-size:14px;opacity:.8}
+    .pricing a.btn-primary,.pricing a.btn-outline{text-decoration:none}
+    .pricing a.btn-primary{display:inline-block;background:linear-gradient(135deg,#2a7bff,#0a57ff);color:#fff;padding:12px 18px;border-radius:12px;border:1px solid rgba(255,255,255,0.15);box-shadow:0 8px 18px rgba(10,87,255,.35);font-weight:700;letter-spacing:.2px;transition:transform .15s ease, box-shadow .2s ease, filter .2s ease}
+    .pricing a.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(10,87,255,.45);filter:saturate(1.1)}
+    .pricing a.btn-primary:active{transform:translateY(0);box-shadow:0 6px 14px rgba(10,87,255,.35)}
+    .pricing a.btn-outline{display:inline-block;background:#fff;color:#0a57ff;padding:12px 18px;border-radius:12px;border:2px solid #0a57ff;box-shadow:0 6px 16px rgba(0,0,0,.15);font-weight:700;letter-spacing:.2px;transition:transform .15s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease}
+    .pricing a.btn-outline:hover{background:#0a57ff;color:#fff;transform:translateY(-2px);box-shadow:0 10px 22px rgba(10,87,255,.35)}
+    .pricing a.btn-outline:active{transform:translateY(0);box-shadow:0 6px 16px rgba(10,87,255,.3)}
+    .pricing a + a{margin-left:8px}
   </style>
   <style>
     .matrix span{position:absolute;font-family:Consolas,monospace;font-size:14px;color:#00ff88;opacity:.85;text-shadow:0 0 8px rgba(0,255,136,.7);animation:matrixFall linear infinite}
@@ -154,6 +167,22 @@
   <style>
     .brand{font-size:76px;font-weight:900;letter-spacing:.5px;margin:0 0 12px;background:radial-gradient(circle at var(--shine-x,50%) var(--shine-y,50%), rgb(255,246,176) 0%, rgb(255,215,0) 25%, rgb(255,178,0) 55%, rgb(184,134,11) 85%, rgb(107,79,11) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;-webkit-text-stroke:1.5px rgba(32,24,0,.6);text-shadow:0 0 10px rgba(255,215,0,.35)}
     .brand:hover{filter:brightness(1.08)}
+  </style>
+  <style>
+    @media(max-width:480px){
+      .brand{font-size:52px;-webkit-text-stroke:2.2px;letter-spacing:.2px}
+      header{padding:60px 16px}
+      .hero h1{font-size:28px}
+      .hero p{font-size:16px}
+      .buttons a,.pricing a.btn-primary,.pricing a.btn-outline{padding:14px 18px;border-radius:14px}
+      .grid{grid-template-columns:1fr}
+      .card{padding:14px}
+      .roi{grid-template-columns:1fr;padding:16px}
+      .roi .input{font-size:16px}
+      .slides{padding:18px 32px}
+      .nav button{padding:10px 12px}
+      .video-card{padding:14px}
+    }
   </style>
 </head>
 <body>
@@ -179,13 +208,13 @@
       <div class="col"><h3>Situação atual</h3><ul><li>Visibilidade limitada</li><li>Presença online difícil de gerir</li><li>Vendas restritas ao balcão</li><li>Tarefas manuais e demoradas</li><li>Difícil competir com grandes</li></ul></div>
       <div class="col"><h3>Com FX Farma</h3><ul><li>Domínio do mercado local online</li><li>Presença digital gerenciada</li><li>Vendas por canais digitais</li><li>Automação com foco no atendimento</li><li>Poder competitivo elevado</li></ul></div>
     </div></div></section>
-    <section class="section"><div class="container"><div class="pricing"><div><div>Oferta limitada</div><div class="price">A partir de R$ 199,90/mês</div><div class="countdown"><span id="count-days">00</span><span id="count-hours">00</span><span id="count-mins">00</span><span id="count-secs">00</span></div></div><div><a href="#cadastro" class="btn-primary">Assinar agora</a><a href="#cadastro" class="btn" style="margin-left:8px">Implantação grátis</a></div></div><div class="notice">*Resultados variam por região, mix e operação.</div></div></section>
+    <section class="section"><div class="container"><div class="pricing"><div><div>Oferta limitada</div><div class="price">A partir de R$ 199,90/mês</div><div class="countdown"><span id="count-days">00</span><span id="count-hours">00</span><span id="count-mins">00</span><span id="count-secs">00</span></div></div><div><a href="#cadastro" class="btn-primary">Assinar agora</a><a href="#cadastro" class="btn-outline" style="margin-left:8px">Implantação grátis</a></div></div><div class="notice">*Resultados variam por região, mix e operação.</div></div></section>
     <section class="section"><div class="container"><h2 style="margin:0 0 12px">Veja o potencial</h2><div class="roi">
-      <div><label>Vendas extras por dia</label><input id="roi-sales" class="input" type="number" min="1" value="4"></div>
-      <div><label>Ticket médio (R$)</label><input id="roi-ticket" class="input" type="number" step="0.01" value="47.68"></div>
-      <div><div>Receita mensal estimada</div><div id="roi-monthly" style="font-weight:bold">R$ 0,00</div></div>
-      <div><div>Custo do plano</div><div id="roi-cost" style="font-weight:bold">R$ 199,90</div></div>
-      <div><div>Resultado</div><div id="roi-result" style="font-weight:bold">—</div></div>
+      <div class="box"><label>Vendas extras por dia</label><input id="roi-sales" class="input" type="number" min="1" value="4"></div>
+      <div class="box"><label>Ticket médio (R$)</label><input id="roi-ticket" class="input" type="number" step="0.01" value="47.68"></div>
+      <div class="box"><label>Receita mensal estimada</label><div id="roi-monthly" class="value">R$ 0,00</div></div>
+      <div class="box"><label>Custo do plano</label><div id="roi-cost" class="value">R$ 199,90</div></div>
+      <div class="box"><label>Resultado</label><div id="roi-result" class="value">—</div></div>
     </div></div></section>
     <section id="cadastro" class="section"><div class="container"><h2 style="margin:0 0 10px">Cadastre sua farmácia</h2><p class="notice">Receba contato de um especialista e comece a vender mais.</p><form id="lead-form" class="roi"><input class="input" type="text" name="name" placeholder="Nome completo" required><input class="input" type="email" name="email" placeholder="E‑mail" required><input class="input" type="tel" name="phone" placeholder="WhatsApp (DDD + número)" required><input class="input" type="text" name="city" placeholder="Cidade/UF" required><select class="select" name="role" required><option value="">Selecione seu perfil</option><option value="farmacia">Sou Farmácia</option><option value="cliente">Quero usar o app</option><option value="entregador">Sou Entregador</option></select><button class="btn-primary" type="submit">Quero aumentar minhas vendas</button><button type="button" id="export-leads" class="btn" style="margin-left:8px">Exportar CSV</button><div id="lead-success" class="card" style="display:none;margin-top:10px">Recebido! Em breve entraremos em contato.</div></form></div></section>
     <section class="section testimonials"><div class="container"><h2 style="margin:0 0 10px">Depoimentos de Clientes</h2>
@@ -241,7 +270,8 @@
     }
 
     function renderAll(){
-      spawn(".matrix", 220, buildMatrixChar);
+      const count = vw()<600 ? 140 : 220;
+      spawn(".matrix", count, buildMatrixChar);
     }
 
     renderAll();
@@ -288,7 +318,8 @@
     function updateCountdown(){const now=Date.now();const d=Math.max(0,end-now);const days=Math.floor(d/86400000),hrs=Math.floor(d%86400000/3600000),mins=Math.floor(d%3600000/60000),secs=Math.floor(d%60000/1000);['count-days','count-hours','count-mins','count-secs'].forEach((id,i)=>{const el=document.getElementById(id);if(el)el.textContent=String([days,hrs,mins,secs][i]).padStart(2,'0');});}
     setInterval(updateCountdown,1000);updateCountdown();
 
-    function calcROI(){const s=document.getElementById('roi-sales');const t=document.getElementById('roi-ticket');if(!s||!t)return;const daily=parseFloat(s.value||'0');const ticket=parseFloat(t.value||'0');const revenue=daily*30*ticket;const m=document.getElementById('roi-monthly');if(m)m.textContent='R$ '+revenue.toFixed(2);const r=document.getElementById('roi-result');if(r)r.textContent=revenue>=199.9?'Cobre o investimento':'Abaixo do investimento';}
+    const BRL=new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
+    function calcROI(){const s=document.getElementById('roi-sales');const t=document.getElementById('roi-ticket');if(!s||!t)return;const daily=Math.max(0,parseFloat(s.value||'0'));const ticket=Math.max(0,parseFloat(t.value||'0'));const revenue=daily*30*ticket;const m=document.getElementById('roi-monthly');if(m)m.textContent=BRL.format(revenue);const costEl=document.getElementById('roi-cost');const cost=199.9;if(costEl)costEl.textContent=BRL.format(cost);const r=document.getElementById('roi-result');if(r){r.textContent=revenue>=cost?'Cobre o investimento':'Abaixo do investimento';r.style.color=revenue>=cost?'#0b7d4f':'#b00020';}}
     document.getElementById('roi-sales')?.addEventListener('input',calcROI);
     document.getElementById('roi-ticket')?.addEventListener('input',calcROI);
     calcROI();
