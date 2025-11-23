@@ -74,15 +74,51 @@ $body = "Novo cadastro FX Farma\n\n" .
         "Cidade/UF: {$city}\n" .
         "Perfil: {$role}\n" .
         "Timestamp: " . date('c', $ts) . "\n";
-$headers = 'From: no-reply@fxfarma.local';
 
-$mailSent = false;
-try {
-  $mailSent = @mail($to, $subject, $body, $headers);
-} catch (Throwable $e) {
-  $mailSent = false;
+function sendMailSmart(string $to, string $subject, string $body, string $replyTo = ''): bool {
+  $smtpHost = getenv('SMTP_HOST') ?: '';
+  $smtpUser = getenv('SMTP_USER') ?: '';
+  $smtpPass = getenv('SMTP_PASS') ?: '';
+  $smtpPort = (int)(getenv('SMTP_PORT') ?: 587);
+  $smtpFrom = getenv('SMTP_FROM') ?: ($smtpUser ?: 'no-reply@fxfarma.local');
+  $smtpSecure = strtolower((string)(getenv('SMTP_SECURE') ?: 'tls'));
+
+  if (class_exists('PHPMailer\\PHPMailer\\PHPMailer') && $smtpHost && $smtpUser && $smtpPass) {
+    try {
+      $pm = new PHPMailer\PHPMailer\PHPMailer(true);
+      $pm->isSMTP();
+      $pm->Host = $smtpHost;
+      $pm->SMTPAuth = true;
+      $pm->Username = $smtpUser;
+      $pm->Password = $smtpPass;
+      if ($smtpSecure === 'ssl') {
+        $pm->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
+        if (!$smtpPort) { $smtpPort = 465; }
+      } else {
+        $pm->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
+      }
+      $pm->Port = $smtpPort ?: 587;
+      $pm->CharSet = 'UTF-8';
+      $pm->setFrom($smtpFrom, 'FX Farma');
+      $pm->addAddress($to);
+      if ($replyTo) { $pm->addReplyTo($replyTo); }
+      $pm->Subject = $subject;
+      $pm->Body = $body;
+      return $pm->send();
+    } catch (Throwable $e) {
+      // Fall through to mail()
+    }
+  }
+  $headers = 'From: ' . $smtpFrom;
+  if ($replyTo) { $headers .= "\r\nReply-To: " . $replyTo; }
+  try {
+    return @mail($to, $subject, $body, $headers);
+  } catch (Throwable $e) {
+    return false;
+  }
 }
+
+$mailSent = sendMailSmart($to, $subject, $body, $email ?: '');
 
 echo json_encode(['ok' => true, 'mail_sent' => $mailSent]);
 ?>
-
