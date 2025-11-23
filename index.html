@@ -170,6 +170,10 @@
     .play-text .large{font-size:18px;font-weight:700}
     .download-hint{margin-top:10px;font-size:13px;opacity:.75}
     @media(max-width:480px){.play-badge{width:100%;justify-content:center;padding:14px 20px}}
+    .whatsapp-float{position:fixed;bottom:20px;right:20px;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px rgba(0,0,0,.35);z-index:999;text-decoration:none;transition:transform .15s ease, box-shadow .2s ease, filter .2s ease}
+    .whatsapp-float:hover{transform:translateY(-2px);box-shadow:0 16px 28px rgba(0,0,0,.45);filter:saturate(1.1)}
+    .whatsapp-float svg{width:28px;height:28px}
+    @media(max-width:480px){.whatsapp-float{bottom:16px;right:16px;width:56px;height:56px}}
   </style>
   <style>
     .matrix span{position:absolute;font-family:Consolas,monospace;font-size:14px;color:#00ff88;opacity:.85;text-shadow:0 0 8px rgba(0,255,136,.7);animation:matrixFall linear infinite}
@@ -259,6 +263,10 @@
     </div></div></section>
     <footer><div class="container">© FX Farma — 2025</div></footer>
   </main>
+
+  <a class="whatsapp-float" href="https://wa.me/5562991683743" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="#fff" d="M12 2a10 10 0 0 0-8.94 14.56L2 22l5.6-1.47A10 10 0 1 0 12 2Zm5.88 14.12c-.26.74-1.53 1.36-2.1 1.45-.56.09-1.25.13-2.02-.12-.47-.15-1.08-.35-1.87-.77-3.29-1.75-5.43-4.85-5.6-5.07-.17-.22-1.34-1.78-1.34-3.4 0-1.61.85-2.4 1.16-2.73.31-.33.68-.41.9-.41h.65c.21 0 .5-.08.79.6.26.61.89 2.12.97 2.28.08.16.13.34.02.56-.11.22-.17.34-.33.52-.17.2-.34.45-.49.6-.17.17-.35.36-.15.67.2.31.88 1.45 1.89 2.36 1.3 1.16 2.39 1.53 2.73 1.68.34.15.54.13.74-.08.2-.21.85-.99 1.08-1.33.23-.34.46-.28.77-.17.31.11 1.97.93 2.31 1.1.34.17.56.26.64.41.09.15.09.86-.17 1.6Z"/></svg>
+  </a>
 
   <script>
     const rand = (min, max) => Math.random() * (max - min) + min;
