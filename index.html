@@ -160,6 +160,16 @@
     .pricing a.btn-outline:hover{background:#0a57ff;color:#fff;transform:translateY(-2px);box-shadow:0 10px 22px rgba(10,87,255,.35)}
     .pricing a.btn-outline:active{transform:translateY(0);box-shadow:0 6px 16px rgba(10,87,255,.3)}
     .pricing a + a{margin-left:8px}
+    .download-section{text-align:center}
+    .download-card{max-width:860px;margin:24px auto;background:#fff;color:#0a1f44;border-radius:16px;box-shadow:0 10px 24px rgba(0,0,0,.25);padding:22px}
+    .play-badge{display:inline-flex;align-items:center;gap:12px;background:#000;color:#fff;padding:12px 18px;border-radius:14px;text-decoration:none;border:1px solid #1c1c1c;box-shadow:0 8px 18px rgba(0,0,0,.35);transition:transform .15s ease, box-shadow .2s ease}
+    .play-badge:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.45)}
+    .play-badge svg{width:28px;height:28px;flex:0 0 28px}
+    .play-text{display:flex;flex-direction:column;text-align:left}
+    .play-text .small{font-size:12px;opacity:.8}
+    .play-text .large{font-size:18px;font-weight:700}
+    .download-hint{margin-top:10px;font-size:13px;opacity:.75}
+    @media(max-width:480px){.play-badge{width:100%;justify-content:center;padding:14px 20px}}
   </style>
   <style>
     .matrix span{position:absolute;font-family:Consolas,monospace;font-size:14px;color:#00ff88;opacity:.85;text-shadow:0 0 8px rgba(0,255,136,.7);animation:matrixFall linear infinite}
@@ -235,6 +245,11 @@
 
     </div></section>
     <section class="section video-section"><div class="container"><h2 style="margin:0 0 10px">Veja o aplicativo</h2><div class="video-card"><div class="video-wrap"><iframe src="https://drive.google.com/file/d/1MCfQvkFM5PUrWxgLecw0aqQXvP7xW49M/preview" allow="autoplay" allowfullscreen></iframe></div><div class="video-caption">Apresentação do app FX Farma</div></div></div></section>
+    <section class="section download-section"><div class="container"><h2 style="margin:0 0 10px">Baixe o nosso app</h2><div class="download-card"><a class="play-badge" href="https://drive.google.com/uc?export=download&id=1p7JCECQ6AIxwx4CFUZYN3iG1RMejMn0A" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00e676"/><stop offset="1" stop-color="#00b0ff"/></linearGradient></defs><polygon points="5,3 21,12 5,21" fill="url(#g)"/></svg>
+      <div class="play-text"><span class="small">Disponível em</span><span class="large">Android (APK)</span></div>
+    </a>
+    <div class="download-hint">Se o download não iniciar, tente abrir em nova aba.</div></div></div></section>
     <section class="section"><div class="container"><h2 style="margin:0 0 10px">Perguntas Frequentes</h2><div class="faq">
       <details><summary>Integra com meu sistema?</summary><div>Conectamos com os principais sistemas usados por farmácias no Brasil, 100% online.</div></details>
       <details><summary>Quando vejo resultados?</summary><div>A partir da ativação nos canais digitais e divulgação, as vendas começam a escalar.</div></details>
