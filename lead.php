@@ -9,6 +9,21 @@ header('Cache-Control: no-store');
 
 $autoload = __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 if (file_exists($autoload)) { require_once $autoload; }
+foreach ([__DIR__ . DIRECTORY_SEPARATOR . '.env.local', __DIR__ . DIRECTORY_SEPARATOR . '.env'] as $envFile) {
+  if (is_file($envFile) && is_readable($envFile)) {
+    foreach (file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+      $line = trim($line);
+      if ($line === '' || str_starts_with($line, '#') || !str_contains($line, '=')) { continue; }
+      [$k, $v] = explode('=', $line, 2);
+      $k = trim($k);
+      $v = trim($v);
+      if ($v !== '' && (($v[0] === '"' && substr($v, -1) === '"') || ($v[0] === "'" && substr($v, -1) === "'"))) { $v = substr($v, 1, -1); }
+      putenv($k . '=' . $v);
+      $_ENV[$k] = $v;
+      $_SERVER[$k] = $v;
+    }
+  }
+}
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   http_response_code(405);
@@ -87,14 +102,16 @@ function sendMailSmart(string $to, string $subject, string $body, string $replyT
   $smtpSecure = strtolower((string)(getenv('SMTP_SECURE') ?: 'tls'));
 
   $class = 'PHPMailer\\PHPMailer\\PHPMailer';
-  if ($smtpHost && $smtpUser && $smtpPass && class_exists($class)) {
+  if ($smtpHost && class_exists($class)) {
     try {
       $pm = new $class(true);
       $pm->isSMTP();
       $pm->Host = $smtpHost;
-      $pm->SMTPAuth = true;
-      $pm->Username = $smtpUser;
-      $pm->Password = $smtpPass;
+      $pm->SMTPAuth = ($smtpUser !== '' && $smtpPass !== '');
+      if ($pm->SMTPAuth) {
+        $pm->Username = $smtpUser;
+        $pm->Password = $smtpPass;
+      }
       if ($smtpSecure === 'ssl') {
         $pm->SMTPSecure = 'ssl';
         if (!$smtpPort) { $smtpPort = 465; }
@@ -110,7 +127,6 @@ function sendMailSmart(string $to, string $subject, string $body, string $replyT
       $pm->Body = $body;
       return $pm->send();
     } catch (Throwable $e) {
-      // Fall through to mail()
     }
   }
   $headers = 'From: ' . $smtpFrom;
