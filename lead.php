@@ -7,6 +7,9 @@ declare(strict_types=1);
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 
+$autoload = __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+if (file_exists($autoload)) { require_once $autoload; }
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   http_response_code(405);
   echo json_encode(['ok' => false, 'error' => 'method_not_allowed']);
@@ -83,19 +86,20 @@ function sendMailSmart(string $to, string $subject, string $body, string $replyT
   $smtpFrom = getenv('SMTP_FROM') ?: ($smtpUser ?: 'no-reply@fxfarma.local');
   $smtpSecure = strtolower((string)(getenv('SMTP_SECURE') ?: 'tls'));
 
-  if (class_exists('PHPMailer\\PHPMailer\\PHPMailer') && $smtpHost && $smtpUser && $smtpPass) {
+  $class = 'PHPMailer\\PHPMailer\\PHPMailer';
+  if ($smtpHost && $smtpUser && $smtpPass && class_exists($class)) {
     try {
-      $pm = new PHPMailer\PHPMailer\PHPMailer(true);
+      $pm = new $class(true);
       $pm->isSMTP();
       $pm->Host = $smtpHost;
       $pm->SMTPAuth = true;
       $pm->Username = $smtpUser;
       $pm->Password = $smtpPass;
       if ($smtpSecure === 'ssl') {
-        $pm->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
+        $pm->SMTPSecure = 'ssl';
         if (!$smtpPort) { $smtpPort = 465; }
       } else {
-        $pm->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
+        $pm->SMTPSecure = 'tls';
       }
       $pm->Port = $smtpPort ?: 587;
       $pm->CharSet = 'UTF-8';
