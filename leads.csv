@@ -1,0 +1,3 @@
+name,email,phone,city,role,ts
+"Teste CLI",teste@example.com,"(11) 99999-9999","São Paulo/SP",farmacia,1763930234
+"Teste SMTP Placeholders",teste@example.com,"(11) 99999-9999","São Paulo/SP",farmacia,1763930834
