@@ -100,7 +100,7 @@
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
     .card{background:rgba(255,255,255,0.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:18px}
     .card h3{margin:0 0 8px;font-size:20px}
-    .form{background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.3);border-radius:14px;padding:20px}
+    .form{background:#fff;border:1px solid rgba(0,0,0,.05);border-radius:16px;padding:20px;color:#0a1f44;overflow:hidden}
     .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:12px}
     .input,.select,.textarea{width:100%;padding:12px 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.35);background:rgba(255,255,255,0.1);color:#fff}
     .input::placeholder,.textarea::placeholder{color:#e3e8ff}
@@ -124,13 +124,6 @@
     .pricing{display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:16px}
     .price{font-size:28px;font-weight:bold}
     .countdown span{display:inline-block;min-width:38px;padding:8px;border-radius:8px;background:rgba(255,255,255,0.12);margin-right:6px;text-align:center}
-    .roi{display:grid;grid-template-columns:repeat(2,minmax(220px,1fr));gap:14px;background:#fff;color:#0a1f44;border-radius:16px;box-shadow:0 12px 28px rgba(0,0,0,.25);padding:20px;border:1px solid rgba(0,0,0,.05)}
-    .roi .box{background:#f7f9ff;border:1px solid #c9d4ff;border-radius:10px;padding:12px;position:relative;overflow:hidden}
-    .roi label{display:block;font-size:13px;margin-bottom:6px;color:#103a8c}
-    .roi .value{font-weight:700;letter-spacing:.2px;color:#102a6b}
-    .roi .input,.roi .select{box-sizing:border-box;display:block;width:100%;margin:0;padding:12px 14px;border-radius:10px;border:1px solid #c9d4ff;background:#fff;color:#102a6b}
-    .roi input[type=number]::-webkit-outer-spin-button,.roi input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-    .roi input[type=number]{-moz-appearance:textfield;appearance:textfield}
     footer{text-align:center;padding:40px 20px;opacity:.85}
     @media(max-width:760px){.compare{grid-template-columns:1fr}.hero-grid{grid-template-columns:1fr}}
     .testimonials{text-align:center}
@@ -161,6 +154,8 @@
     .pricing a.btn-outline:active{transform:translateY(0);box-shadow:0 6px 16px rgba(10,87,255,.3)}
     .pricing a + a{margin-left:8px}
     .input,.select{appearance:none}
+    .contact-section .input,.contact-section .textarea{background:#fff;color:#0a1f44;border:1px solid #c9d4ff;box-sizing:border-box;border-radius:10px}
+    .contact-section .input::placeholder,.contact-section .textarea::placeholder{color:#1a2c52}
     .download-section{text-align:center}
     .download-card{max-width:860px;margin:24px auto;background:#fff;color:#0a1f44;border-radius:16px;box-shadow:0 10px 24px rgba(0,0,0,.25);padding:22px}
     .play-badge{display:inline-flex;align-items:center;gap:12px;background:#000;color:#fff;padding:12px 18px;border-radius:14px;text-decoration:none;border:1px solid #1c1c1c;box-shadow:0 8px 18px rgba(0,0,0,.35);transition:transform .15s ease, box-shadow .2s ease}
@@ -196,8 +191,6 @@
       .buttons a,.pricing a.btn-primary,.pricing a.btn-outline{padding:14px 18px;border-radius:14px}
       .grid{grid-template-columns:1fr}
       .card{padding:14px}
-      .roi{grid-template-columns:1fr;padding:16px}
-      .roi .input{font-size:16px}
       .slides{padding:18px 32px}
       .nav button{padding:10px 12px}
       .video-card{padding:14px}
@@ -243,7 +236,7 @@
     </div></div></section>
     
     
-    <section id="contato" class="section contact-section"><div class="container"><h2 style="margin:0 0 10px">Contato</h2><form id="contactForm" class="form" action="https://formsubmit.co/ara100limite@gmail.com" method="POST"><input type="hidden" name="_captcha" value="false"><label for="nome">Nome</label><input class="input" type="text" id="nome" name="nome" placeholder="Seu nome" required><label for="email">E‑mail</label><input class="input" type="email" id="email" name="email" placeholder="Seu e‑mail" required><label for="mensagem">Mensagem</label><textarea class="textarea" id="mensagem" name="mensagem" placeholder="Escreva sua mensagem aqui" rows="4" required></textarea><button class="btn-primary" type="submit">Enviar</button></form><div id="successMessage" class="alert alert-success" role="status" aria-live="polite" style="display:none;margin-top:10px">Sua mensagem foi enviada com sucesso!</div><div class="whatsapp" style="margin-top:20px"><a href="https://wa.me/5562991683743" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="vertical-align:middle;margin-right:8px" width="24" height="24"><path fill="#25D366" d="M12 2a10 10 0 0 0-8.94 14.56L2 22l5.6-1.47A10 10 0 1 0 12 2Zm5.88 14.12c-.26.74-1.53 1.36-2.1 1.45-.56.09-1.25.13-2.02-.12-.47-.15-1.08-.35-1.87-.77-3.29-1.75-5.43-4.85-5.6-5.07-.17-.22-1.34-1.78-1.34-3.4 0-1.61.85-2.4 1.16-2.73.31-.33.68-.41.9-.41h.65c.21 0 .5-.08.79.6.26.61.89 2.12.97 2.28.08.16.13.34.02.56-.11.22-.17.34-.33.52-.17.2-.34.45-.49.6-.17.17-.35.36-.15.67.2.31.88 1.45 1.89 2.36 1.3 1.16 2.39 1.53 2.73 1.68.34.15.54.13.74-.08.2-.21.85-.99 1.08-1.33.23-.34.46-.28.77-.17.31.11 1.97.93 2.31 1.1.34.17.56.26.64.41.09.15.09.86-.17 1.6Z"/></svg>Fale conosco pelo WhatsApp</a></div></div></section>
+    <section id="contato" class="section contact-section"><div class="container"><h2 style="margin:0 0 10px">Contato</h2><form id="contactForm" class="form" action="https://formsubmit.co/ara100limite@gmail.com" method="POST"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_subject" value="Contato FX Farma"><input type="hidden" name="_next" value="https://fxfarma.online/#contato-sucesso"><input class="input" type="text" id="nome" name="nome" placeholder="Seu nome" required><input class="input" type="email" id="email" name="email" placeholder="Seu e‑mail" required><label for="mensagem">Mensagem</label><textarea class="textarea" id="mensagem" name="mensagem" placeholder="Escreva sua mensagem aqui" rows="4" required></textarea><button class="btn-primary" type="submit">Enviar</button></form><div id="successMessage" class="alert alert-success" role="status" aria-live="polite" style="display:none;margin-top:10px">Sua mensagem foi enviada com sucesso!</div></div></section>
     <section class="section testimonials"><div class="container"><h2 style="margin:0 0 10px">Depoimentos de Clientes</h2>
       <div class="slides">
         <div class="slide active"><div class="slide-card"><p>“Aumentamos o delivery em poucas semanas.”</p><div>- Farmácia São Lucas</div></div></div>
@@ -345,7 +338,9 @@
     const contactForm=document.getElementById('contactForm');
     const successMessage=document.getElementById('successMessage');
     if(contactForm){contactForm.addEventListener('submit',async function(e){e.preventDefault();const btn=contactForm.querySelector('button[type="submit"]');if(btn){btn.disabled=true;btn.textContent='Enviando...';}if(successMessage){successMessage.style.display='none';}
-      try{const res=await fetch(contactForm.action,{method:'POST',body:new FormData(contactForm)});if(res.ok){if(successMessage){successMessage.style.display='block';}contactForm.reset();}else{alert('Ocorreu um erro ao enviar sua mensagem. Tente novamente.');}}
+      const fd=new FormData(contactForm);
+      const next=fd.get('_next');
+      try{const res=await fetch(contactForm.action,{method:'POST',body:fd});if(res.ok){if(next){window.location.href=String(next);}else{if(successMessage){successMessage.style.display='block';}contactForm.reset();}}else{alert('Ocorreu um erro ao enviar sua mensagem. Tente novamente.');}}
       catch(err){alert('Ocorreu um erro ao enviar sua mensagem. Verifique sua conexão e tente novamente.');}
       finally{if(btn){btn.disabled=false;btn.textContent='Enviar';}}
     });}
@@ -354,11 +349,7 @@
     function updateCountdown(){const now=Date.now();const d=Math.max(0,end-now);const days=Math.floor(d/86400000),hrs=Math.floor(d%86400000/3600000),mins=Math.floor(d%3600000/60000),secs=Math.floor(d%60000/1000);['count-days','count-hours','count-mins','count-secs'].forEach((id,i)=>{const el=document.getElementById(id);if(el)el.textContent=String([days,hrs,mins,secs][i]).padStart(2,'0');});}
     setInterval(updateCountdown,1000);updateCountdown();
 
-    const BRL=new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
-    function calcROI(){const s=document.getElementById('roi-sales');const t=document.getElementById('roi-ticket');if(!s||!t)return;const daily=Math.max(0,parseFloat(s.value||'0'));const ticket=Math.max(0,parseFloat(t.value||'0'));const revenue=daily*30*ticket;const m=document.getElementById('roi-monthly');if(m)m.textContent=BRL.format(revenue);const costEl=document.getElementById('roi-cost');const cost=199.9;if(costEl)costEl.textContent=BRL.format(cost);const r=document.getElementById('roi-result');if(r){r.textContent=revenue>=cost?'Cobre o investimento':'Abaixo do investimento';r.style.color=revenue>=cost?'#0b7d4f':'#b00020';}}
-    document.getElementById('roi-sales')?.addEventListener('input',calcROI);
-    document.getElementById('roi-ticket')?.addEventListener('input',calcROI);
-    calcROI();
+    
 
     const brand=document.querySelector('header h1.brand');
     function brandShine(e){if(!brand)return;const r=brand.getBoundingClientRect();const cx=(e.touches?e.touches[0].clientX:e.clientX),cy=(e.touches?e.touches[0].clientY:e.clientY);const x=((cx-r.left)/r.width)*100;const y=((cy-r.top)/r.height)*100;brand.style.setProperty('--shine-x',Math.max(0,Math.min(100,x))+'%');brand.style.setProperty('--shine-y',Math.max(0,Math.min(100,y))+'%');}

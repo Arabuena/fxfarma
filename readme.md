@@ -47,11 +47,7 @@ Landing page estática para apresentação da plataforma FX Farma.
   - Evite versionar vídeos. `images/*.mp4` está em `.gitignore`.
   - Use Google Drive para vídeos incorporados (iframe).
 
-## SMTP Opcional (Avançado)
-- `lead.php` suporta envio por SMTP via `PHPMailer`.
-- Variáveis de ambiente lidas de `.env`/`.env.local`:
-  - `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS`, `SMTP_PORT`, `SMTP_FROM`, `SMTP_SECURE`.
-- Observação: o site atual usa FormSubmit, então `lead.php` não é necessário para o formulário de contato.
+ 
 
 ## Suporte
 - Dúvidas e melhorias: abra uma issue ou envie contato pelo formulário no site.
